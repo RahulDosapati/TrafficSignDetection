@@ -1,101 +1,90 @@
-🚦 Traffic Sign Detection
-This project builds a deep learning-based image classification system to detect and classify traffic signs from camera-captured images. Using both a custom Convolutional Neural Network (CNN) and a fine-tuned MobileNet model, it supports key tasks in autonomous driving by reliably identifying road signs.
+# 🚦 Traffic Sign Detection
 
-🌐 Project Overview
-The models are trained on the GTSRB (German Traffic Sign Recognition Benchmark) dataset, which includes over 50,000 labeled images spanning 43 different traffic sign classes. The project covers the full pipeline:
+This project presents a deep learning-based image classification system to detect and classify traffic signs using camera-captured images. Leveraging both a custom Convolutional Neural Network (CNN) and the MobileNet architecture, this project aims to support autonomous driving systems by accurately recognizing road signs.
 
-Image preprocessing
+## 🌐 Project Overview
 
-Training CNN and MobileNet models
+The classification models are trained on the GTSRB (German Traffic Sign Recognition Benchmark) dataset containing thousands of traffic sign images across 43 categories. The pipeline includes:
 
-Evaluating performance using standard classification metrics
+- Image preprocessing
+- Model training using both CNN and MobileNet
+- Performance evaluation based on key metrics
 
-📁 Dataset
-Source: GTSRB - German Traffic Sign Recognition Benchmark
+## 📁 Dataset
 
-Description:
+- **Source**: [GTSRB - German Traffic Sign Recognition Benchmark](https://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset)
+- **Description**:
+  - Over 50,000 labeled images of traffic signs
+  - 43 distinct classes (e.g., Speed limits, Stop, Yield, No Entry)
+  - Includes variations in lighting, angle, and occlusion to simulate real driving scenarios
 
-50,000+ labeled images
+## 🧠 Models
 
-43 traffic sign classes (e.g., speed limits, stop, yield, no entry)
+- **CNN (Built from Scratch)**:
+  - Layers: Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+  - Trained from scratch using raw traffic sign images
 
-Includes real-world variation in lighting, orientation, and occlusion
+- **MobileNet (Transfer Learning)**:
+  - Uses pre-trained MobileNet (on ImageNet)
+  - Fine-tuned on the GTSRB dataset
+  - Faster training and higher accuracy with fewer parameters
 
-🧠 Models
-🔹 CNN (Built from Scratch)
-Layers: Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+## 🧼 Data Preprocessing
 
-Trained from scratch using the GTSRB dataset
+- Image resizing and normalization
+- One-hot encoding of labels
+- Train-test split using `sklearn`
 
-Provides a lightweight, interpretable baseline
+## 📈 Evaluation Metrics
 
-🔹 MobileNet (Transfer Learning)
-Pre-trained on ImageNet, then fine-tuned on traffic signs
+- Accuracy and loss plots over training epochs
+- Confusion matrix to visualize misclassifications
+- Classification report including:
+  - Precision
+  - Recall
+  - F1-score
 
-Faster training, fewer parameters, higher accuracy
+## 🛠️ Technologies Used
 
-Suitable for real-time or edge applications
+- Python
+- TensorFlow / Keras
+- NumPy & Pandas
+- Matplotlib & Seaborn
+- Scikit-learn
 
-🧼 Data Preprocessing
-Image resizing and normalization
+## 🚀 How to Run the Project
 
-One-hot encoding of labels
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/traffic-sign-detection.git
+   cd traffic-sign-detection
+   ```
+2. **Install dependencies**
 
-Train–test split using train_test_split from sklearn
+  ```bash
+    pip install -r requirements.txt
+  ```
+3. **Download the dataset**
 
-📈 Evaluation Metrics
-Accuracy & Loss Curves over training epochs
+- Download GTSRB from Kaggle or the official source
 
-Confusion Matrix to visualize predictions
+- Place it inside a data/ folder
 
-Classification Report with precision, recall, F1-score
+4. **Run the CNN model**
 
-⚙️ Tech Stack
-Python
+  ```bash
+    python src/train_cnn.py
+  ```
+5. **Run the MobileNet model**
 
-TensorFlow / Keras
+  ```bash
+    python src/train_mobilenet.py
+  ```
+# 🖼️ Sample Results
+- Visualizations of training accuracy and loss
 
-NumPy, Pandas
+- Confusion matrix showing predicted vs actual classes
 
-Matplotlib, Seaborn
+- MobileNet model achieves higher accuracy with reduced training time
 
-Scikit-learn
 
-🚀 How to Run
-Clone the repo
-
-bash
-Copy
-Edit
-git clone https://github.com/your-username/traffic-sign-detection.git
-cd traffic-sign-detection
-Install dependencies
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Download the dataset
-
-Get the GTSRB dataset from Kaggle or the official site
-
-Place it inside a data/ folder
-
-Run the CNN model
-
-bash
-Copy
-Edit
-python src/train_cnn.py
-Run the MobileNet model
-
-bash
-Copy
-Edit
-python src/train_mobilenet.py
-🖼️ Sample Outputs
-Plots showing training accuracy/loss
-
-Confusion matrix of predicted vs actual classes
-
-Performance comparison of CNN vs MobileNet
